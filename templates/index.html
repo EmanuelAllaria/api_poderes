@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Superhéroes</title>
+    <style>
+        /* Estilos globales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #00aaff, #1a1a1a);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        /* Contenedor del formulario */
+        .form-container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            max-width: 600px;
+            width: 100%;
+            margin: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .form-container:hover {
+            transform: scale(1.05);
+        }
+
+        label {
+            font-size: 1.2rem;
+            color: #f2f2f2;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 500;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            resize: none;
+            background: #333;
+            color: #f2f2f2;
+            box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        textarea:focus {
+            outline: none;
+            background: #444;
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #ff8800;
+            transform: scale(1.05);
+        }
+
+        /* Sección de resultado */
+        .result {
+            margin-top: 40px;
+            padding: 25px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .result h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ff6600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        pre {
+            font-size: 1.1rem;
+            color: #f2f2f2;
+            padding: 15px;
+            border-radius: 10px;
+            background: #111;
+            border: 1px solid #ff6600;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Animaciones */
+        .result p {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Animación de aparición */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Generador de Superhéroes</h1>
+
+    <div class="form-container">
+        <form action="/" method="POST">
+            <label for="description">Descripción de tu personalidad</label>
+            <textarea name="description" id="description" rows="5"
+                placeholder="Ejemplo: Soy extrovertido, me encanta la tecnología..." required></textarea>
+            <button type="submit">Generar Superhéroe</button>
+        </form>
+    </div>
+
+    {% if superhero_profile %}
+    <div class="result">
+        <h2>Perfil de tu Superhéroe</h2>
+        <p><strong>¡Aquí tienes tu nuevo superhéroe!</strong></p>
+        <pre>{{ superhero_profile }}</pre>
+    </div>
+    {% endif %}
+</body>
+
+</html>
